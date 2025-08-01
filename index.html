@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAIT E-Cell | Know Your Motivation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- 
+        Chosen Palette: Energetic & Playful (Modified with Orange/Amber on a Dark Theme)
+        Application Structure Plan: A full-screen, scroll-based presentation webpage. Each section acts as a "slide" for a video. The flow is: 1. Title, 2. Core Values, 3. Interactive Team Gallery, 4. Collective Motivation, 5. Vision for Change, 6. Journey Timeline, 7. Closing. This richer structure provides more content for the video.
+        Visualization & Content Choices: Report Info: Team Members -> Goal: Inform -> Viz: Interactive Photo Gallery -> Interaction: Click to reveal full poster in a modal -> Justification: More engaging and professional than a static grid. Report Info: NEC Tasks -> Goal: Organize/Change -> Viz: HTML/CSS Timeline -> Justification: Clearly shows progress over time.
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #f0f6fc; }
+        .slide { min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5rem 2rem; border-bottom: 1px solid #30363d; opacity: 0; transform: translateY(40px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .slide.visible { opacity: 1; transform: translateY(0); }
+        .animated-item { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .slide.visible .animated-item { opacity: 1; transform: translateY(0); }
+        .modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(13, 17, 23, 0.8); z-index: 50; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none; }
+        .modal-backdrop.visible { opacity: 1; pointer-events: all; }
+        .modal-content { transform: scale(0.95); transition: transform 0.3s ease-in-out; max-height: 90vh; }
+        .modal-backdrop.visible .modal-content { transform: scale(1); }
+        .member-card { transition: all 0.3s ease; }
+        .member-card:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <section class="slide text-center">
+        <div class="animated-item">
+            <img src="https://i.ibb.co/TMW0xg3m/Whats-App-Image-2025-07-29-at-3-26-33-PM.jpg" alt="E-Cell SAIT Logo" class="h-24 mx-auto">
+            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-wider mt-6">Know Your <span class="text-amber-500">Motivation</span></h1>
+            <p class="mt-4 text-xl md:text-2xl text-gray-400">The Collective Vision of SAIT E-Cell for NEC 2025</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Core Values -->
+    <section class="slide">
+        <div class="text-center mb-12">
+            <h2 class="animated-item text-4xl md:text-5xl font-bold">Our <span class="text-amber-500">Core Values</span></h2>
+            <p class="animated-item mt-2 text-lg text-gray-400" style="transition-delay: 200ms;">The principles that drive our actions.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
+            <div class="animated-item bg-gray-900 p-8 rounded-2xl border border-gray-700 text-center" style="transition-delay: 400ms;">
+                <span class="text-4xl">🤝</span>
+                <h3 class="text-2xl font-bold mt-4">Collaboration</h3>
+                <p class="mt-2 text-gray-400">We believe in synergy. By working together, we combine our strengths to achieve goals greater than what any one of us could accomplish alone.</p>
+            </div>
+            <div class="animated-item bg-gray-900 p-8 rounded-2xl border border-gray-700 text-center" style="transition-delay: 600ms;">
+                <span class="text-4xl">💡</span>
+                <h3 class="text-2xl font-bold mt-4">Innovation</h3>
+                <p class="mt-2 text-gray-400">We constantly challenge the status quo, embrace creative solutions, and foster an environment where new ideas are not just welcomed, but celebrated.</p>
+            </div>
+            <div class="animated-item bg-gray-900 p-8 rounded-2xl border border-gray-700 text-center" style="transition-delay: 800ms;">
+                <span class="text-4xl">🏆</span>
+                <h3 class="text-2xl font-bold mt-4">Ownership</h3>
+                <p class="mt-2 text-gray-400">Every member takes full responsibility for their role. We are proactive, dedicated, and committed to delivering excellence in every task we undertake.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Team Introduction -->
+    <section id="team" class="slide">
+        <div class="text-center mb-12">
+            <h2 class="animated-item text-4xl md:text-5xl font-bold">Meet the <span class="text-amber-500">Minds Behind the Mission</span></h2>
+            <p class="animated-item mt-2 text-lg text-gray-400" style="transition-delay: 200ms;">Our dedicated team for NEC 2025. Click on a member to see their poster.</p>
+        </div>
+        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 max-w-5xl">
+            <!-- Team members will be injected by JS -->
+        </div>
+    </section>
+
+    <!-- Slide 4: Collective Motivation -->
+    <section id="motivation" class="slide text-center">
+        <div class="max-w-4xl animated-text">
+            <h2 class="animated-text-item text-4xl md:text-5xl font-bold mb-6">Our Collective <span class="text-amber-500">'Why'</span></h2>
+            <p class="animated-text-item text-xl md:text-2xl text-gray-300 leading-relaxed">
+                "We are united by a shared passion to move beyond theoretical knowledge and dive into the practical world of entrepreneurship. Our motivation stems from the desire to create a platform at SAIT that not only supports innovative ideas but also builds a community of future leaders, problem-solvers, and change-makers. We believe in learning by doing, and this E-Cell is our arena."
+            </p>
+        </div>
+    </section>
+
+    <!-- Slide 5: Vision for Change -->
+    <section id="vision" class="slide text-center">
+        <div class="max-w-4xl animated-text">
+            <h2 class="animated-text-item text-4xl md:text-5xl font-bold mb-8">Our Vision for <span class="text-amber-500">Change</span></h2>
+            <div class="space-y-6 text-left text-lg">
+                <div class="animated-text-item bg-gray-900 p-6 rounded-lg border border-gray-700 flex items-start space-x-4">
+                    <span class="text-3xl text-amber-500 font-bold">1</span>
+                    <div>
+                        <h3 class="font-bold text-xl">Bridge the Gap</h3>
+                        <p class="text-gray-400 mt-1">To connect students with real-world entrepreneurs and industry mentors, transforming classroom knowledge into practical business acumen.</p>
+                    </div>
+                </div>
+                <div class="animated-text-item bg-gray-900 p-6 rounded-lg border border-gray-700 flex items-start space-x-4">
+                    <span class="text-3xl text-amber-500 font-bold">2</span>
+                    <div>
+                        <h3 class="font-bold text-xl">Foster Innovation</h3>
+                        <p class="text-gray-400 mt-1">To build an inclusive ecosystem where every student feels empowered to share, develop, and test their startup ideas without fear of failure.</p>
+                    </div>
+                </div>
+                <div class="animated-text-item bg-gray-900 p-6 rounded-lg border border-gray-700 flex items-start space-x-4">
+                    <span class="text-3xl text-amber-500 font-bold">3</span>
+                    <div>
+                        <h3 class="font-bold text-xl">Create Impact</h3>
+                        <p class="text-gray-400 mt-1">To launch initiatives that not only provide learning opportunities but also contribute to solving real-world problems, creating a lasting legacy at SAIT.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 6: Journey So Far -->
+    <section class="slide">
+         <div class="text-center mb-12">
+            <h2 class="animated-item text-4xl md:text-5xl font-bold">Our <span class="text-amber-500">Journey So Far</span></h2>
+            <p class="animated-item mt-2 text-lg text-gray-400" style="transition-delay: 200ms;">Key milestones in our NEC 2025 campaign.</p>
+        </div>
+        <div class="w-full max-w-3xl space-y-8">
+            <div class="animated-item flex items-center space-x-6" style="transition-delay: 400ms;">
+                <div class="bg-amber-500 text-white rounded-full h-16 w-16 flex items-center justify-center font-bold text-xl">01</div>
+                <div>
+                    <h3 class="text-2xl font-bold">Head Start</h3>
+                    <p class="text-gray-400">Challenged peers across colleges to ignite a nationwide movement.</p>
+                </div>
+            </div>
+            <div class="animated-item flex items-center space-x-6" style="transition-delay: 600ms;">
+                <div class="bg-amber-500 text-white rounded-full h-16 w-16 flex items-center justify-center font-bold text-xl">02</div>
+                <div>
+                    <h3 class="text-2xl font-bold">Social Media Presence</h3>
+                    <p class="text-gray-400">Established our digital identity and content strategy.</p>
+                </div>
+            </div>
+            <div class="animated-item flex items-center space-x-6" style="transition-delay: 800ms;">
+                <div class="bg-amber-500 text-white rounded-full h-16 w-16 flex items-center justify-center font-bold text-xl">03</div>
+                <div>
+                    <h3 class="text-2xl font-bold">Define the Roles</h3>
+                    <p class="text-gray-400">Formalized our team structure for maximum efficiency.</p>
+                </div>
+            </div>
+             <div class="animated-item flex items-center space-x-6" style="transition-delay: 1000ms;">
+                <div class="bg-amber-500 text-white rounded-full h-16 w-16 flex items-center justify-center font-bold text-xl">04</div>
+                <div>
+                    <h3 class="text-2xl font-bold">Brand Your E-Cell</h3>
+                    <p class="text-gray-400">Crafted our unique brand identity, vision, and mission.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Closing Slide -->
+    <section class="slide text-center">
+        <div class="animated-text">
+            <h2 class="animated-text-item text-4xl md:text-5xl font-bold">This is Our <span class="text-amber-500">Motivation.</span></h2>
+            <p class="animated-text-item mt-4 text-xl text-gray-300">Thank You for being a part of our journey.</p>
+            <p class="animated-text-item mt-12 text-sm text-gray-500">SAIT E-Cell | NEC 2025</p>
+        </div>
+    </section>
+
+    <!-- Member Details Modal -->
+    <div id="member-modal" class="modal-backdrop" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+             <img id="modal-img" src="" class="rounded-2xl shadow-2xl border-2 border-gray-600" style="max-height: 85vh;">
+        </div>
+        <button class="absolute top-4 right-4 text-white text-4xl" onclick="closeModal()">&times;</button>
+    </div>
+
+    <script>
+        const teamData = {
+            abhishek: { name: "Abhishek Chouhan", designation: "Founder(SAIT E-cell) & Overall Coordinator", poster: "https://i.ibb.co/0pGBHqsG/Untitled-design.png" },
+            disha: { name: "Disha Soni", designation: "Lead Events & PR", poster: "https://i.ibb.co/5WDypPyp/EP.png" },
+            anvi: { name: "Anvi Soni", designation: "Lead Sponsorship & Corporate Relations", poster: "https://i.ibb.co/QFPYG2HN/SCR.png" },
+            harsh: { name: "Harsh Gehlot", designation: "Lead Finance & Documentation", poster: "https://i.ibb.co/39rvb9FR/FD.png" },
+            chandan: { name: "Chandan Solanki", designation: "Lead Media & Content", poster: "https://i.ibb.co/203WLtYy/MC.png" },
+            mehran: { name: "Mehran Ansari", designation: "Lead Design & Creatives", poster: "https://i.ibb.co/cKY5c3cD/DC.png" },
+            shivendra: { name: "Shivendra S. Dangi", designation: "Marketing & Outreach", poster: "https://i.ibb.co/yM8jZLh/MO-2.png" },
+            prince: { name: "Prince Malviya", designation: "Marketing & Outreach", poster: "https://i.ibb.co/dJ6NCNPM/MO.png" },
+            anmol: { name: "Anmol Trivedi", designation: "Web & Tech", poster: "https://i.ibb.co/nsgsLCvN/WT.png" },
+            shreya: { name: "Shreya Sisodiya", designation: "Events & PR", poster: "https://i.ibb.co/xtsT39BV/EP-2.png" },
+            zaman: { name: "Zaman Khan", designation: "Sponsorship", poster: "https://i.ibb.co/M5Pp47HY/SCR-2.png" },
+            srishti: { name: "Srishti Doshi", designation: "Finance & Docs", poster: "https://i.ibb.co/S28vCZ5/FD-2.png" }
+        };
+
+        const modal = document.getElementById('member-modal');
+        function showMemberDetails(memberId) {
+            const member = teamData[memberId];
+            document.getElementById('modal-img').src = member.poster;
+            document.getElementById('modal-img').onerror = function() { this.src = 'https://placehold.co/800x1000/1f2937/ffffff?text=Poster+Not+Available'; };
+            modal.classList.add('visible');
+        }
+
+        function closeModal() {
+            modal.classList.remove('visible');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const teamGrid = document.querySelector('#team .grid');
+            Object.keys(teamData).forEach((key, index) => {
+                const member = teamData[key];
+                const memberCard = document.createElement('div');
+                memberCard.className = 'animated-item text-center cursor-pointer member-card';
+                memberCard.style.transitionDelay = `${100 * (index + 1)}ms`;
+                memberCard.onclick = () => showMemberDetails(key);
+                memberCard.innerHTML = `
+                    <img src="${member.poster}" onerror="this.src='https://placehold.co/128x128/1f2937/ffffff?text=${member.name.charAt(0)}'" class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto border-4 border-gray-700 object-cover">
+                    <h3 class="mt-4 font-bold">${member.name}</h3>
+                    <p class="text-sm text-amber-500">${member.designation}</p>
+                `;
+                teamGrid.appendChild(memberCard);
+            });
+
+            const slides = document.querySelectorAll('.slide');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        const animatedItems = entry.target.querySelectorAll('.animated-item');
+                        animatedItems.forEach((item, index) => {
+                           item.style.transitionDelay = `${200 * (index + 1)}ms`;
+                        });
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+        });
+    </script>
+
+</body>
+</html>
